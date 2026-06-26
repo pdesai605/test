@@ -2,14 +2,10 @@
   "name": "dragonfly",
   "version": "0.1.0",
   "private": true,
-  "engines": {
-    "node": ">=20.9.0"
-  },
   "scripts": {
-    "dev": "next dev -p 3001",
+    "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "start:local": "next start -p 3001",
     "lint": "eslint"
   },
   "dependencies": {

@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useRef } from "react";
-import { gsap } from "@/lib/gsap-register";
+import { gsap } from "../lib/gsap-register";
 import DragonflyLogo from "./DragonflyLogo";
 import Particles from "./Particles";
 

@@ -1,9 +1,9 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
-import { gsap, registerGSAP } from "@/lib/gsap-register";
+import { gsap, registerGSAP } from "../../lib/gsap-register";
 import { useVideoAudio } from "../VideoAudioProvider";
-import { VIDEOS } from "@/lib/videos";
+import { VIDEOS } from "../../lib/videos";
 
 function GalleryItem({ src, index }: { src: string; index: number }) {
   const itemRef = useRef<HTMLDivElement>(null);

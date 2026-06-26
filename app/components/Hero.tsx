@@ -2,11 +2,11 @@
 
 import { useEffect, useRef } from "react";
 import { motion, useMotionValue, useSpring, useTransform } from "framer-motion";
-import { gsap } from "@/lib/gsap-register";
+import { gsap } from "../lib/gsap-register";
 import CinematicVideo from "./CinematicVideo";
 import Particles from "./Particles";
 import { useVideoAudio } from "./VideoAudioProvider";
-import { VIDEOS } from "@/lib/videos";
+import { VIDEOS } from "../lib/videos";
 
 interface HeroProps {
   entered: boolean;

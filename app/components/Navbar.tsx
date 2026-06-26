@@ -2,9 +2,9 @@
 
 import { useEffect, useRef } from "react";
 import Link from "next/link";
-import { gsap } from "@/lib/gsap-register";
+import { gsap } from "../lib/gsap-register";
 import DragonflyLogo from "./DragonflyLogo";
-import { NAV_LINKS } from "@/lib/videos";
+import { NAV_LINKS } from "../lib/videos";
 
 interface NavbarProps {
   visible: boolean;

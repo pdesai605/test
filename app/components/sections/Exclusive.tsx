@@ -1,9 +1,9 @@
 "use client";
 
 import { useEffect, useRef } from "react";
-import { gsap, registerGSAP } from "@/lib/gsap-register";
+import { gsap, registerGSAP } from "../../lib/gsap-register";
 import CinematicVideo from "../CinematicVideo";
-import { VIDEOS } from "@/lib/videos";
+import { VIDEOS } from "../../lib/videos";
 
 export default function Exclusive() {
   const sectionRef = useRef<HTMLElement>(null);

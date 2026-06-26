@@ -2,7 +2,7 @@
 
 import { useState, useRef, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { gsap, registerGSAP, ScrollTrigger } from "@/lib/gsap-register";
+import { gsap, registerGSAP, ScrollTrigger } from "../lib/gsap-register";
 import DragonflyLogo from "./DragonflyLogo";
 
 const TIME_SLOTS = [

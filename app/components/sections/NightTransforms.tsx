@@ -1,9 +1,9 @@
 "use client";
 
 import { useEffect, useRef } from "react";
-import { gsap, ScrollTrigger, registerGSAP } from "@/lib/gsap-register";
+import { gsap, ScrollTrigger, registerGSAP } from "../../lib/gsap-register";
 import CinematicVideo from "../CinematicVideo";
-import { VIDEOS } from "@/lib/videos";
+import { VIDEOS } from "../../lib/videos";
 
 export default function NightTransforms() {
   const sectionRef = useRef<HTMLElement>(null);

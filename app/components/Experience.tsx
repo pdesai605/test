@@ -6,7 +6,7 @@ import Hero from "./Hero";
 import Navbar from "./Navbar";
 import SmoothScroll from "./SmoothScroll";
 import { VideoAudioProvider } from "./VideoAudioProvider";
-import { ScrollTrigger } from "@/lib/gsap-register";
+import { ScrollTrigger } from "../lib/gsap-register";
 import NightTransforms from "./sections/NightTransforms";
 import Crafted from "./sections/Crafted";
 import Energy from "./sections/Energy";
