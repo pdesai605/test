@@ -2,7 +2,7 @@ export const VIDEOS = {
   hero: "/videos/heroanimationvideo.mp4",
   night: "/videos/video1.mp4",
   cocktail: "/videos/video2.mp4",
-  dj: "/videos/video3.mp4",
+  dj: "/videos/video4.mp4",
   dining: "/videos/video1.mp4",
   crowd: "/videos/video2.mp4",
   gallery: [
