@@ -1,7 +1,7 @@
 "use client";
 
 import { createContext, useContext, useEffect, useRef } from "react";
-import Lenis from "lenis";
+import Lenis from "@studio-freight/lenis";
 import { ScrollTrigger, registerGSAP } from "../lib/gsap-register";
 
 const LenisContext = createContext<Lenis | null>(null);
