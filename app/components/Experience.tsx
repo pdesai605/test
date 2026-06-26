@@ -35,10 +35,13 @@ export default function Experience() {
   useEffect(() => {
     if (!entered) return;
 
+    ScrollTrigger.refresh();
+
+    const isMobile = window.matchMedia("(max-width: 767px)").matches;
+    if (isMobile) return;
+
     const timer = setTimeout(() => {
-      ScrollTrigger.refresh();
-      const target = document.getElementById("experience");
-      target?.scrollIntoView({ behavior: "smooth" });
+      document.getElementById("experience")?.scrollIntoView({ behavior: "smooth" });
     }, 1400);
 
     return () => clearTimeout(timer);
@@ -89,20 +92,18 @@ function ExperienceContent({
             />
           )}
 
-          <div
-            className={`relative transition-opacity duration-1000 ${
-              entered ? "opacity-100" : "pointer-events-none opacity-0"
-            }`}
-          >
-            <NightTransforms />
-            <Crafted />
-            <Energy />
-            <Dining />
-            <Exclusive />
-            <Gallery />
-            <Booking />
-            <Footer />
-          </div>
+          {entered && (
+            <>
+              <NightTransforms />
+              <Crafted />
+              <Energy />
+              <Dining />
+              <Exclusive />
+              <Gallery />
+              <Booking />
+              <Footer />
+            </>
+          )}
         </main>
       </SmoothScroll>
     </>

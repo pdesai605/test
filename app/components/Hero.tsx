@@ -26,7 +26,7 @@ export default function Hero({ entered, onEnter, audioReady }: HeroProps) {
   const springY = useSpring(mouseY, { stiffness: 50, damping: 20 });
   const parallaxX = useTransform(springX, [-0.5, 0.5], [-15, 15]);
   const parallaxY = useTransform(springY, [-0.5, 0.5], [-10, 10]);
-  const { unlockAudio } = useVideoAudio();
+  const { unlockAudio, forceActiveVideo } = useVideoAudio();
 
   useEffect(() => {
     if (audioReady) unlockAudio();
@@ -61,10 +61,20 @@ export default function Hero({ entered, onEnter, audioReady }: HeroProps) {
     mouseY.set((e.clientY - rect.top) / rect.height - 0.5);
   };
 
+  const playHeroVideo = () => {
+    unlockAudio();
+    forceActiveVideo("hero");
+  };
+
+  const handleVideoTap = (e: React.PointerEvent) => {
+    e.stopPropagation();
+    playHeroVideo();
+  };
+
   const handleEnter = () => {
     if (entered) return;
 
-    unlockAudio();
+    playHeroVideo();
 
     const tl = gsap.timeline({ onComplete: onEnter });
 
@@ -99,6 +109,16 @@ export default function Hero({ entered, onEnter, audioReady }: HeroProps) {
         videoId="hero"
         overlayClassName="opacity-90"
       />
+
+      {!entered && (
+        <button
+          type="button"
+          aria-label="Play hero video"
+          className="absolute inset-0 z-[5] cursor-pointer touch-manipulation bg-transparent md:hidden"
+          onPointerDown={handleVideoTap}
+        />
+      )}
+
       <Particles count={20} />
 
       <motion.div
@@ -125,7 +145,7 @@ export default function Hero({ entered, onEnter, audioReady }: HeroProps) {
             ref={buttonRef}
             type="button"
             onClick={handleEnter}
-            className="font-heading gold-glow mt-14 cursor-pointer border border-gold/40 bg-bg-accent/30 px-16 py-4 text-sm tracking-[0.35em] text-gold uppercase opacity-0 backdrop-blur-sm transition-all duration-700 hover:border-gold/70 hover:bg-bg-maroon/40 hover:text-gold-soft"
+            className="font-heading gold-glow relative z-20 mt-14 cursor-pointer touch-manipulation border border-gold/40 bg-bg-accent/30 px-16 py-4 text-sm tracking-[0.35em] text-gold uppercase opacity-0 backdrop-blur-sm transition-all duration-700 hover:border-gold/70 hover:bg-bg-maroon/40 hover:text-gold-soft"
           >
             Enter
           </button>

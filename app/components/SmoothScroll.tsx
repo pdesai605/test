@@ -23,18 +23,23 @@ export default function SmoothScroll({ enabled, children }: SmoothScrollProps) {
 
     if (!enabled) {
       document.body.style.overflow = "hidden";
+      document.documentElement.style.overflow = "hidden";
       return () => {
         document.body.style.overflow = "";
+        document.documentElement.style.overflow = "";
       };
     }
 
     document.body.style.overflow = "";
+    document.documentElement.style.overflow = "";
+
+    const isMobile = window.matchMedia("(max-width: 767px)").matches;
 
     const lenis = new Lenis({
       duration: 1.4,
       easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
       smoothWheel: true,
-      touchMultiplier: 1.5,
+      touchMultiplier: isMobile ? 1 : 1.5,
     });
 
     lenisRef.current = lenis;

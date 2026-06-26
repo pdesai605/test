@@ -18,6 +18,7 @@ type VideoAudioContextValue = {
   registerVideo: (id: string, element: HTMLVideoElement, container: HTMLElement) => void;
   unregisterVideo: (id: string) => void;
   unlockAudio: () => void;
+  forceActiveVideo: (id: string) => void;
 };
 
 const VideoAudioContext = createContext<VideoAudioContextValue | null>(null);
@@ -37,6 +38,22 @@ export function VideoAudioProvider({ children }: { children: React.ReactNode }) 
 
   const unlockAudio = useCallback(() => {
     setUnlocked(true);
+  }, []);
+
+  const forceActiveVideo = useCallback((id: string) => {
+    setUnlocked(true);
+    activeIdRef.current = id;
+
+    videosRef.current.forEach((entry, videoId) => {
+      const isActive = videoId === id;
+      entry.element.muted = !isActive;
+      entry.element.volume = isActive ? 1 : 0;
+
+      if (isActive) {
+        entry.element.currentTime = entry.element.currentTime || 0;
+        entry.element.play().catch(() => {});
+      }
+    });
   }, []);
 
   const applyAudioState = useCallback(() => {
@@ -136,7 +153,7 @@ export function VideoAudioProvider({ children }: { children: React.ReactNode }) 
 
   return (
     <VideoAudioContext.Provider
-      value={{ registerVideo, unregisterVideo, unlockAudio }}
+      value={{ registerVideo, unregisterVideo, unlockAudio, forceActiveVideo }}
     >
       {children}
     </VideoAudioContext.Provider>
